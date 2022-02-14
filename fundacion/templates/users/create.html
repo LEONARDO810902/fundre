@@ -1,22 +1,61 @@
-<!DOCTYPE html>
-<html lang="es">
+<!-- head para PC -->
+{% extends "users/base_users.html" %}
+{% load static %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<h1>Registrar usuario del funcionario </h1>
+{% block content %}
 
-<form method="post">{% csrf_token %}
-    {{form.as_p}}
+{% include "includes/header.html" %}
 
-    <button type="submit">Registrar</button>
-</form>
+<div class="grid-container">
+    <div class="grid-x grid-margin-x align-center">
+        <div class="cell medium-10 large-6" style="margin-top: 2em;">
+            <div class="card" style="width: 100%;">
+                <div class="card-divider">
+                    <h4>Ingrese sus datos</h4>
+                </div>
+                <div class="card-section">
+                    <form class="grid-x grid-margin-x" method="post" enctype="multipart/form-data"> {% csrf_token%}
+                        <div class="cell large-12">
+                            <label>Usuario:
+                                {{form.username}}
+                            </label>
+                        </div>
+                        <div class="cell large-12">
+                            <label>Correo:
+                                {{form.email}}
+                            </label>
+                        </div>
+                        <div class="cell medium-6">
+                            <label>Nombres:
+                                {{form.nombres}}
+                            </label>
+                        </div>
+                        <div class="cell medium-6">
+                            <label>Nombres:
+                                {{form.apellidos}}
+                            </label>
+                        </div>
+                        <div class="cell medium-6">
+                            <label>Genero:
+                                {{form.genero}}
+                            </label>
+                        </div>
+                        <div class="cell medium-12">
+                            <label>Contraseña:
+                                {{form.password1}}
+                            </label>
+                        </div>
+                        <div class="cell medium-12">
+                            <label>Repetir Contraseña:
+                                {{form.password2}}
+                            </label>
+                        </div>
+                        <button type="submit" class="cell hollow button primary">Registrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<body>
-
-</body>
-
-</html>
+{% endblock content %}

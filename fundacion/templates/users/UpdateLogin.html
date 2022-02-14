@@ -1,0 +1,36 @@
+{% extends "home/plantilla.html" %}
+{% load static %}
+
+{% block content %}
+
+{% include "includes/header.html" %}
+
+<div class="grid-container">
+    <div class="grid-x grid-margin-x align-center">
+        <div class="cell medium-6 large-4" style="margin-top: 2em;">
+            <div class="card" style="width: 100%;">
+                <div class="card-divider">
+                    <h4>Cambiar la Contraseña de: {{user.get_full_name}}</h4>
+                </div>
+                <div class="card-section">
+                    <form class="grid-x grid-margin-x " method="post">{% csrf_token%}
+                        <div class="cell medium-12">
+                            <label>Contraseña actual:
+                                <input type="password" placeholder="Contraseña actual ">
+                            </label>
+                        </div>
+                        <div class="cell medium-12">
+                            <label>Contraseña Nueva:
+                                <input type="password" placeholder="Paswword Nueva">
+                            </label>
+                        </div>
+                        <button type="submit" class="cell hollow button primary">Actualizar contraseña</button>
+                    </form>
+                    <p>La fecha: {{fecha}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
