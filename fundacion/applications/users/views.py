@@ -35,7 +35,7 @@ class FechaMixin(object):
 class UserCreateView(LoginRequiredMixin, FechaMixin, FormView):
     template_name = 'users/create.html'
     form_class = UserCreateForm
-    success_url = reverse_lazy('home_app:home')
+    success_url = reverse_lazy('home_app:index')
     login_url = reverse_lazy('users_app:user-login')
 
     def form_valid(self, form):
@@ -55,7 +55,7 @@ class UserCreateView(LoginRequiredMixin, FechaMixin, FormView):
 class LoginUsers(FechaMixin, FormView):
     template_name = 'users/login.html'
     form_class = LoginForm
-    success_url = reverse_lazy('home_app:home')
+    success_url = reverse_lazy('home_app:index')
 
     def form_valid(self, form):
         user = authenticate(

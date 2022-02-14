@@ -1,21 +1,21 @@
 <header>
     <div class="grid-x grid-margin-x header">
         <div class="cell small-12 medium-4 large-3">
-            <a href="#" style="font-size: 20px; color: #0277bd;">
+            <a href="{% url 'home_app:index' %}" style="font-size: 20px; color: #0277bd;">
                 FUNDACION CRISTO REDENTOR
             </a>
         </div>
-        <div class="cell small-12 medium-4">
+        <div class="cell small-12 medium-2">
 
         </div>
 
 
 
 
-        <div class="cell small-12 large-5">
+        <div class="cell small-12 large-7">
             <ul class="dropdown menu" data-dropdown-menu style="justify-content: flex-end;">
                 <li>
-                    <h4>usuario: {{user.username}}</h4>
+                    <h4>{{user.username}}</h4>
                 </li>
                 <li>
                     <a href="{% url 'home_app:index' %}">Inicio</a>
