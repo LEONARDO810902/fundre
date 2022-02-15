@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-import secrets
 from django.core.exceptions import ImproperlyConfigured
 import json
 
@@ -54,10 +53,17 @@ DJANGO_APPS = (
 )
 
 LOCAL_APPS = (
+    'applications.home',
     'applications.users',
+    'applications.entrada',
+    'applications.favoritos',
+
 )
 
-THIRD_PARTY_APPS = ()
+THIRD_PARTY_APPS = (
+    'ckeditor',
+    'ckeditor_uploader',
+)
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
 

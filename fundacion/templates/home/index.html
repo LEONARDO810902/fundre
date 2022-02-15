@@ -14,10 +14,10 @@
         <!-- bloque de blog principal -->
         <div class="cell small-12 large-6">
             <div class="card" style="width: 100%;">
-                <img src="">
+                <img src="{{portada.image.url}}" style="height: 380px">
                 <div class="card-section">
-                    <h4>This is a card.</h4>
-                    <p>It has an easy to override visual style, and is appropriately subdued.</p>
+                    <h4>{{portada.titulo }}</h4>
+                    <p>{{portada.resumen | truncatechars:120}}</p>
                 </div>
             </div>
         </div>
@@ -25,14 +25,20 @@
 
         <!-- bloque de blog principal -->
         <div class="cell small-12 large-6 grid-x grid-margin-x">
+
+            {% for entrada in entradas_home %}
+
             <div class="cell small-12 large-6">
                 <div class="card" style="width: 100%;">
-                    <img src="https://neunapp.com/media/blog/header16.jpg">
+                    <img src="{{entrada.image.url}}" style="height: 180px">
                     <div class="card-section">
-                        <h5>This is a card.</h5>
+                        <h5>{{entrada.titulo | truncatechars:38}}</h5>
                     </div>
                 </div>
             </div>
+            {% endfor %}
+
+
         </div>
         <!-- FIN bloque de blog principal -->
     </div>
@@ -41,10 +47,9 @@
     <!-- segundo bloque pantalla home -->
     <div class="grid-x align-center" style="margin-top: 1em;">
         <div class="cell small-12 large-10 callout secondary">
-            <h5>Conoce mas de nosotros:</h5>
+            <h5>{{home.about_title}}</h5>
             <p>
-                Conoce mas se nuestra fundación escribiendose a nuestros comunicados que seran enviados
-                semanalmente sobre las actividades realizadas por nuestros colaboradores.
+                {{home.about_text}}
             </p>
 
             <p>
@@ -54,12 +59,13 @@
             <!-- This is the first modal -->
             <div class="reveal" id="exampleModal2" data-reveal style="width: 300px;">
                 <p class="lead">Ingresa tu correo</p>
-                <form class="grid-x grid-margin-x">
+                <form class="grid-x grid-margin-x" method="POST" action="{% url 'home_app:home_suscribe'%}">
+                    {% csrf_token %}
                     <div class="cell small-12">
-                        <input type="text" placeholder="E-mail..">
+                        {{form.email}}
                     </div>
                     <div class="cell small-12">
-                        <button type="button" class="success button">Suscribirme</button>
+                        <button type="submit" class="success button">Suscribirme</button>
                     </div>
                 </form>
             </div>
@@ -72,33 +78,18 @@
     <!-- tercer bloque home -->
     <div class="grid-x grid-margin-x align-center">
         <h3 class="cell">Articulos Recientes:</h3>
+
+        {% for recientes in recientes_home %}
         <div class="cell small-6 large-4">
             <div class="card" style="width: 100%;">
-                <img src="">
+                <img src="{{recientes.image.url}}" style="height: 180px">
                 <div class="card-section">
-                    <h4>This is a card.</h4>
-                    <p>It has an easy to override visual style, and is appropriately subdued.</p>
+                    <h4>{{recientes.titulo | truncatechars:20}}</h4>
+                    <p>{{recientes.resumen | truncatechars:30}}</p>
                 </div>
             </div>
         </div>
-        <div class="cell small-6 large-4">
-            <div class="card" style="width: 100%;">
-                <img src="">
-                <div class="card-section">
-                    <h4>This is a card.</h4>
-                    <p>It has an easy to override visual style, and is appropriately subdued.</p>
-                </div>
-            </div>
-        </div>
-        <div class="cell small-6 large-4">
-            <div class="card" style="width: 100%;">
-                <img src="">
-                <div class="card-section">
-                    <h4>This is a card.</h4>
-                    <p>It has an easy to override visual style, and is appropriately subdued.</p>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
     <!-- FIN tercer bloque -->
 </div>
