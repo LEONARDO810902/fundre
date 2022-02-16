@@ -19,3 +19,17 @@ class EntradaManager(models.Manager):
         return self.filter(
             publicar=True,
         ).order_by('-created')[:6]
+
+    def Buscar_entradas(self, buscarentrada, categoria):
+        # procedimiento para buscar las entradas  por palabra clave
+        if len(categoria) > 0:
+            return self.filter(
+                categoria__short_name=categoria,
+                titulo__icontains=buscarentrada,
+                publicar=True,
+            ).order_by('-created')
+        else:
+            return self.filter(
+                titulo__icontains=buscarentrada,
+                publicar=True,
+            ).order_by('-created')

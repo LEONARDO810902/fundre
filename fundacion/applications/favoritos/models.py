@@ -3,6 +3,9 @@ from django.conf import settings
 
 # Create your models here.
 
+# managers
+from .managers import FovoritosManager
+
 
 from model_utils.models import TimeStampedModel
 
@@ -17,10 +20,12 @@ class Favoritos(TimeStampedModel):
     entrada = models.ForeignKey(
         Entrada, related_name='entradas_favoritas', on_delete=models.CASCADE)
 
+    objects = FovoritosManager()
+
     class Meta:
         unique_together = ('user', 'entrada')
         verbose_name = ("Favoritos")
         verbose_name_plural = ("Favoritos")
 
     def __str__(self):
-        return self.Entrada.titulo
+        return self.entrada.titulo

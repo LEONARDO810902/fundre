@@ -25,6 +25,7 @@ urlpatterns = (
         re_path('', include('applications.home.urls')),
         re_path('', include('applications.users.urls')),
         re_path('', include('applications.entrada.urls')),
+        re_path('', include('applications.favoritos.urls')),
 
         # urls para ckeditor para
         re_path(r'^ckeditor/', include("ckeditor_uploader.urls")),

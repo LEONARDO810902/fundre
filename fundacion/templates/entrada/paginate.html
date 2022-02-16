@@ -1,0 +1,28 @@
+<div class="cell">
+    {% if is_paginated %}
+    <nav aria-label="Pagination">
+        <ul class="Pagination">
+            {% if page_obj.has_previous %}
+            <li class="Pagination-previous">
+                <a href="?page={{page_obj.previous_page_number}}">Atras</a>
+            </li>
+            {% endif %}
+
+            {% for pagina in paginator.page_range %}
+
+            {% ifequal pagina page_obj.number %}
+            <li class="current"><span class="show-for-sr">You're on page</span>{{ pagina }} </li>
+            {% else %}
+            <li class=""><a href="?page={{pagina}}">{{ pagina }}</a></li>
+
+            {% endifequal %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+            <li class="pagination-next">
+                <a href="?page={{page_obj.next_page_number}}">Siguiente</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}

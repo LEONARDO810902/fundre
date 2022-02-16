@@ -15,14 +15,14 @@
         <div class="cell small-12 large-7">
             <ul class="dropdown menu" data-dropdown-menu style="justify-content: flex-end;">
                 <li>
-                    <h4>{{user.username}}</h4>
+                    <h5>{{user.username}}</h5>
                 </li>
                 <li>
                     <a href="{% url 'home_app:index' %}">Inicio</a>
 
                 </li>
                 <li>
-                    <a href="#">Actividades</a>
+                    <a href="{% url 'entrada_app:lista-entradas' %}">Actividades</a>
                 </li>
                 <li>
                     <a href="#">Servicios</a>
@@ -38,10 +38,27 @@
                     </ul>
                 </li>
                 <li>
+
+                    {% if not user.is_anonymous %}
+                    <a class="warning button" href="{% url 'favoritos_app:favorito-user' %}">Perfil</a>
+
+                    {% else %}
+
                     <a class="success button" href="{% url 'users_app:user-login' %}">Acceder</a>
+
+                    {% endif %}
                 </li>
                 <li>
-                    <a class="primary button" href="{% url 'users_app:user-logout' %}">Salir</a>
+
+                    {% if user.is_authenticated %}
+
+                    <a class="secondary button" href="{% url 'users_app:user-logout' %}">Salir</a>
+
+                    {% else %}
+
+                    {% endif %}
+
+
                 </li>
 
             </ul>

@@ -1,0 +1,53 @@
+<!-- head para PC -->
+{% extends "favoritos/base_favoritos.html" %}
+{% load static %}
+
+{% block content %}
+
+{% include "includes/header.html" %}
+
+<div class="grid-container">
+    <div class="grid-x grid-margin-x align-center" style="margin-top: 1em;">
+        <!-- bloque de datos de usuario -->
+        <div class="cell small-12 large-4">
+            <div class="callout">
+                <h4>usuario: <span>{{user.username}}</span></h4>
+                <h5>{{user.get_full_name}}</h5>
+                <p>{{user.email}} - </p>
+                <a href="{% url 'users_app:user-logout'%}">Salir</a>
+
+            </div>
+        </div>
+        <!-- FIN bloque de datos de usuario -->
+
+
+        <!-- bloque de articulos favoritos de usuario -->
+        <div class="cell large-8 grid-x grid-margin-x align-center">
+
+            {% for entradas in entradas_user %}
+
+            <div class="cell small-12">
+                <div class="card-favoritos">
+                    <img class="card-favoritos-img" src="{{entradas.entrada.image.url}}">
+                    <div class="card-favoritos-body">
+                        <h3 class="card-favoritos-body-titulo">{{entradas.entrada.titulo}}</h3>
+                        <p class="card-favoritos-body-text">{{entradas.entrada.resumen}}</p>
+                        <form class="card-favoritos-body-actions" method="post"
+                            action="{% url 'favoritos_app:delete-favoritos' entradas.id %}"> {% csrf_token %}
+                            <a class="button warning"
+                                href="{% url 'entrada_app:edit-entradas' entradas.entrada.id %}">Ver</a>
+
+                            <button type="submit" class="button alert">Eliminar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+        <!-- FIN bloque de articulos favoritos de usuario -->
+    </div>
+</div>
+{% include "includes/footer.html" %}
+
+{% endblock content %}
