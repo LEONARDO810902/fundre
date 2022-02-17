@@ -99,6 +99,10 @@ TEMPLATES = [
 WSGI_APPLICATION = 'fundacion.wsgi.application'
 
 
+SESSION_COOKIE_AGE = 5*60
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
