@@ -1,7 +1,7 @@
 .header {
     display: flex;
     align-items: center;
-    background: #dfe6e9;
+    background: #dfe6e9;;
     padding: 0.5em 1em 0.5em 1em;
 }
 
@@ -24,4 +24,11 @@
     width: 120px;
     height: 120px;
     margin-right: 1em;
+}
+
+.img-esal{
+    width: 10px;
+    height: 10px;
+    margin-right: 1em;
+    background: #dfe6e9;
 }

@@ -19,9 +19,4 @@ urlpatterns = [
         views.ContactoCreateView.as_view(),
         name='home-contacto',
     ),
-    path(
-        'esal',
-        views.EsalpageView.as_view(),
-        name='home_esal',
-    ),
 ]

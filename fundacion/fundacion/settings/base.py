@@ -57,6 +57,7 @@ LOCAL_APPS = (
     'applications.users',
     'applications.entrada',
     'applications.favoritos',
+    'applications.esal',
 
 )
 
@@ -99,7 +100,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'fundacion.wsgi.application'
 
 
-SESSION_COOKIE_AGE = 5*60
+SESSION_COOKIE_AGE = 5*600
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 

@@ -1,0 +1,32 @@
+<!-- head para PC -->
+{% extends "esal/base_esal.html" %}
+{% load static %}
+
+{% block title %} ESAL - DIAN {% endblock %}
+
+{% block content %}
+
+{% include "includes/header.html" %}
+
+<div class="grid-x grid-margin-x align-center">
+    <h3 class="cell">Esal - DIAN:</h3>
+
+    {% for esal in Esal %}
+    <div class="cell small-6 large-3">
+        <div class="card" style="width: 80%;">
+            <a target="_blank" href="{{esal.archivo.url}}"><img class="img-esal" src="/static/img/pdf.jpg"
+                    style="width: 160px; height: 160px;"></a>
+            <div class="card-section">
+                <a target="_blank" href="{{esal.archivo.url}}">
+                    <h4>{{esal.titulo | truncatechars:40}}</h4>
+                </a>
+                <p>{{esal.resumen | truncatechars:70}}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% include "includes/footer.html" %}
+
+{% endblock content %}
