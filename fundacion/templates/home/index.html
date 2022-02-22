@@ -2,7 +2,11 @@
 {% extends "home/base_home.html" %}
 {% load static %}
 
-{% block title %} Fundación Cristo Redentor {% endblock %}
+{% block title %} {{home.title}} {% endblock %}
+
+{% block description %}
+<meta name="description" content="{{home.description}}">
+{% endblock description %}
 
 {% block content %}
 
@@ -16,7 +20,7 @@
             <div class="card" style="width: 100%;">
                 <img src="{{portada.image.url}}" style="height: 380px">
                 <div class="card-section">
-                    <h4><a href="{% url 'entrada_app:edit-entradas' portada.id%}">{{portada.titulo }}</a></h4>
+                    <h4><a href="{% url 'entrada_app:edit-entradas' portada.slug%}">{{portada.titulo }}</a></h4>
                     <p>{{portada.resumen | truncatechars:120}}</p>
                 </div>
             </div>
@@ -32,7 +36,7 @@
                 <div class="card" style="width: 100%;">
                     <img src="{{entrada.image.url}}" style="height: 180px">
                     <div class="card-section">
-                        <a href="{% url 'entrada_app:edit-entradas' entrada.id%}">
+                        <a href="{% url 'entrada_app:edit-entradas' entrada.slug%}">
                             <h5>{{entrada.titulo | truncatechars:38}}</h5>
                         </a>
                     </div>
@@ -86,7 +90,7 @@
             <div class="card" style="width: 100%;">
                 <img src="{{recientes.image.url}}" style="height: 180px">
                 <div class="card-section">
-                    <a href="{% url 'entrada_app:edit-entradas' recientes.id%}">
+                    <a href="{% url 'entrada_app:edit-entradas' recientes.slug%}">
                         <h4>{{recientes.titulo | truncatechars:20}}</h4>
                     </a>
                     <p>{{recientes.resumen | truncatechars:30}}</p>

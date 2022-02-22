@@ -10,7 +10,7 @@ urlpatterns = [
         name='lista-entradas',
     ),
     path(
-        'entradas/<pk>',
+        'entradas/<slug>',
         views.EntradaDetailView.as_view(),
         name='edit-entradas',
     ),

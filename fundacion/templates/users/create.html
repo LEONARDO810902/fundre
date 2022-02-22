@@ -51,6 +51,11 @@
                             <label>Repetir Contraseña:
                                 {{form.password2}}
                             </label>
+
+                            {% for e in form.password2.errors %}
+                            <p style="color:red">{{e}}</p>
+                            {% endfor %}
+
                         </div>
                         <button type="submit" class="cell hollow button primary">Registrar</button>
                     </form>

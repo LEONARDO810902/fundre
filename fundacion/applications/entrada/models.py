@@ -1,5 +1,9 @@
+# librerias de python
+from datetime import timedelta, datetime
+
 from django.conf import settings
 from django.db import models
+from django.template.defaultfilters import slugify
 
 # terceros
 from model_utils.models import TimeStampedModel
@@ -48,6 +52,7 @@ class Entrada(TimeStampedModel):
     image = models.ImageField('Imagen', upload_to='Entrada',)
     portada = models.BooleanField(default=False)
     in_home = models.BooleanField(default=False)
+    # para las paginas de url automaticas
     slug = models.SlugField(editable=False, max_length=300)
 
     objects = EntradaManager()
@@ -58,3 +63,21 @@ class Entrada(TimeStampedModel):
 
     def __str__(self):
         return self.titulo
+
+
+# procedimiento para crear la urls automaticas para CEO de la pagina
+
+
+    def save(self, *args, **kwargs):
+        now = datetime.now()
+        total_time = timedelta(
+            hours=now.hour,
+            minutes=now.minute,
+            seconds=now.second
+        )
+        seconds = int(total_time.total_seconds())
+        slug_unique = '%s %s' % (self.titulo, str(seconds))
+
+        self.slug = slugify(slug_unique)
+
+        super(Entrada, self).save(*args, **kwargs)
