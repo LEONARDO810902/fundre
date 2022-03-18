@@ -9,7 +9,10 @@ from django.http import HttpResponseRedirect
 
 from django.views.generic import (
     View,
+    ListView,
     CreateView,
+    UpdateView,
+    DeleteView,
 )
 
 from django.views.generic.edit import (
@@ -19,7 +22,12 @@ from django.views.generic.edit import (
 from .forms import (
     UserCreateForm,
     LoginForm,
-    UpdatePasswordForm
+    UpdatePasswordForm,
+    UserUpdateForm,
+)
+
+from applications.users.mixins import (
+    AdminpermisoMixin
 )
 
 from .models import User
@@ -30,6 +38,8 @@ class FechaMixin(object):
         context = super(FechaMixin, self).get_context_data(**kwargs)
         context['fecha'] = datetime.datetime.now()
         return context
+
+# DESARROLLO DE LOS DIFERENTES VIEWS
 
 
 class UserCreateView(LoginRequiredMixin, FechaMixin, FormView):
@@ -42,11 +52,12 @@ class UserCreateView(LoginRequiredMixin, FechaMixin, FormView):
         #
         User.objects.create_user(
             form.cleaned_data['username'],
-            form.cleaned_data['password1'],
             form.cleaned_data['email'],
+            form.cleaned_data['password1'],
             nombres=form.cleaned_data['nombres'],
             apellidos=form.cleaned_data['apellidos'],
-            genero=form.cleaned_data['genero']
+            genero=form.cleaned_data['genero'],
+            ocupation=form.cleaned_data['ocupation'],
         )
         #
         return super(UserCreateView, self).form_valid(form)
@@ -76,11 +87,22 @@ class LogoutView(View):
         )
 
 
+class UserListView(AdminpermisoMixin, FechaMixin, ListView):
+    template_name = 'users/lista.html'
+    context_object_name = 'usuarios'
+    login_url = reverse_lazy('users_app:user-login')
+
+    def get_queryset(self):
+        return User.objects.usuarios_sistema()
+
+
+# ACTUALIZACION EN FORMULARIOS DE USUARIOS
+
+
 class UpdatePasswordView(LoginRequiredMixin, FechaMixin, FormView):
     template_name = 'users/UpdateLogin.html'
     form_class = UpdatePasswordForm
     success_url = reverse_lazy('users_app:user-login')
-    login_url = reverse_lazy('users_app:user-login')
 
     def form_valid(self, form):
         usuario = self.request.user
@@ -92,5 +114,21 @@ class UpdatePasswordView(LoginRequiredMixin, FechaMixin, FormView):
             new_password = form.cleaned_data['password2']
             usuario.set_password(new_password)
             usuario.save()
-            logout(self.request)
+
+        logout(self.request)
         return super(UpdatePasswordView, self).form_valid(form)
+
+
+# ACUTLIZAR EL USUARIO
+
+
+class UserUpdateView(UpdateView):
+    template_name = 'users/update.html'
+    model = User
+    form_class = UserUpdateForm
+    success_url = reverse_lazy('users_app:user-listado')
+
+
+class UserDeleteView(DeleteView):
+    model = User
+    success_url = reverse_lazy('users_app:user-listado')

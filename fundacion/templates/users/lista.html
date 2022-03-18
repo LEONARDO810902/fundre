@@ -1,0 +1,59 @@
+{% extends "users/base_users.html" %}
+{% load static %}
+
+{% block title %} Listado de Usuarios del sistema {% endblock %}
+
+{% block content %}
+
+{% include "includes/header.html" %}
+
+<section class="altura">
+
+    <div class="grid-x grid-margin-x align-center ">
+        <h3 class="cell title" style="margin-bottom: 1em; text-align: center;">Usuarios del Sistema </h3>
+        <h4 class="color_fecha">Fecha actual: {{fecha}}</h4>
+        <table class="cell">
+            <thead>
+                <th>Email</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Ultima Conexion</th>
+                <th>Permisos</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </thead>
+            <tbody>
+                {% for usuario in usuarios %}
+                <tr>
+                    <td>{{ usuario.email }}</td>
+                    <td>{{ usuario.nombres }}</td>
+                    <td>{{ usuario.apellidos}}</td>
+                    <td>{{ usuario.last_login }}</td>
+                    <td>{{ usuario.get_ocupation_display }}</td>
+                    <td>
+                        {% if usuario.is_active %}
+                        <span class="label success">Activo</span>
+                        {% else %}
+                        <span class="label alert">Inactivo</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{% url 'users_app:user-update' usuario.pk %}" class="button warning">Actualizar<i
+                                class="fi-pencil"></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+        <div class="row">
+            <a href="{% url 'users_app:user-create' %}" class="button large success">Agregar Usuario</a>
+            <a href="{% url 'home_app:index' %}" class="button large expand secondary">Inicio</a>
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock content %}

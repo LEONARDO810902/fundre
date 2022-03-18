@@ -8,7 +8,7 @@
 
 {% include "includes/header.html" %}
 
-<div class="grid-container">
+<div class="grid-container altura">
     <div class="grid-x grid-margin-x align-center">
         <div class="cell medium-10 large-6" style="margin-top: 2em;">
             <div class="card" style="width: 100%;">
@@ -42,6 +42,11 @@
                                 {{form.genero}}
                             </label>
                         </div>
+                        <div class="cell medium-6">
+                            <label>Permisos:
+                                {{form.ocupation}}
+                            </label>
+                        </div>
                         <div class="cell medium-12">
                             <label>Contraseña:
                                 {{form.password1}}
@@ -59,6 +64,7 @@
                         </div>
                         <button type="submit" class="cell hollow button primary">Registrar</button>
                     </form>
+                    <a href="{% url 'users_app:user-listado' %}" class="button secondary">Regresar al Listado</a>
                 </div>
             </div>
         </div>

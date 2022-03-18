@@ -35,8 +35,18 @@ class UserCreateForm(forms.ModelForm):
             'email',
             'nombres',
             'apellidos',
-            'genero'
+            'genero',
+            'ocupation'
         )
+        widgets = {
+            'username': forms.TextInput(attrs={'placeholder': 'Usuario', 'class': 'input-group-field'}),
+            'email': forms.EmailInput(attrs={'placeholder': 'Correo Electronico', 'class': 'input-group-field'}),
+            'Nombres': forms.TextInput(attrs={'placeholder': 'Nombres', 'class': 'input-group-field'}),
+            'Apellidos': forms.TextInput(attrs={'placeholder': 'Apellidos', 'class': 'input-group-field'}),
+            'Genero': forms.Select(attrs={'placeholder': 'Genero', 'class': 'input-group-field'}),
+            'ocupation': forms.Select(attrs={'placeholder': 'Ocupación', 'class': 'input-group-field'}),
+
+        }
 
     def clean_password2(self):
         if self.cleaned_data['password1'] != self.cleaned_data['password2']:
@@ -95,3 +105,27 @@ class UpdatePasswordForm(forms.Form):
                    }
         )
     )
+
+
+class UserUpdateForm(forms.ModelForm):
+
+    class Meta:
+
+        model = User
+        fields = (
+            'email',
+            'nombres',
+            'apellidos',
+            'genero',
+            'ocupation',
+            'is_active',
+        )
+        widgets = {
+            'email': forms.EmailInput(attrs={'placeholder': 'Correo Electronico', 'class': 'input-group-field'}),
+            'Nombres': forms.TextInput(attrs={'placeholder': 'Nombres', 'class': 'input-group-field'}),
+            'Apellidos': forms.TextInput(attrs={'placeholder': 'Apellidos', 'class': 'input-group-field'}),
+            'Genero': forms.Select(attrs={'placeholder': 'Genero', 'class': 'input-group-field'}),
+            'ocupation': forms.Select(attrs={'placeholder': 'Ocupación', 'class': 'input-group-field'}),
+            'is_active': forms.CheckboxInput(attrs={'type': 'checkbox', 'class': 'input-group-field'})
+
+        }

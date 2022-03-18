@@ -25,4 +25,19 @@ urlpatterns = [
         views.UpdatePasswordView.as_view(),
         name='user-UpdatePassword',
     ),
+    path(
+        'lista/',
+        views.UserListView.as_view(),
+        name='user-listado',
+    ),
+    path(
+        'users/update/<pk>/',
+        views.UserUpdateView.as_view(),
+        name='user-update',
+    ),
+    path(
+        'users/delete/<pk>/',
+        views.UserDeleteView.as_view(),
+        name='user-delete',
+    ),
 ]

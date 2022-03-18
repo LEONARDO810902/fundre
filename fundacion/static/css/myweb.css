@@ -1,0 +1,20 @@
+body {
+    margin: 0px;
+    font-family: "Muli", sans-serif;
+    background-image: linear-gradient(to top, #68c9c9 0%, #7f5fa7 100%);
+
+}
+.title{
+    color: white !important;
+}
+
+.altura {
+    height: calc(94.6vh);
+    width: 100%; 
+}
+
+.button{   
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+}

@@ -17,14 +17,9 @@
                 <div class="card-section">
                     <form class="grid-x grid-margin-x " method="post">{% csrf_token%}
                         <div class="cell medium-12">
-                            <label>Contraseña actual:
-                                <input type="password" placeholder="Contraseña actual ">
-                            </label>
-                        </div>
-                        <div class="cell medium-12">
-                            <label>Contraseña Nueva:
-                                <input type="password" placeholder="Paswword Nueva">
-                            </label>
+
+                            {{form.as_p}}
+
                         </div>
                         <button type="submit" class="cell hollow button primary">Actualizar contraseña</button>
                     </form>
