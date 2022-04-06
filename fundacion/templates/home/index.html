@@ -8,11 +8,9 @@
 <meta name="description" content="{{home.description}}">
 {% endblock description %}
 
-{% block content %}
+{% block panel %}
 
-{% include "includes/header.html" %}
-
-<div class="grid-container">
+<div>
     <!-- primer bloque del home -->
     <div class="grid-x grid-margin-x" style="margin-top: 1em;">
         <!-- bloque de blog principal -->
@@ -86,7 +84,7 @@
         <h3 class="cell">Articulos Recientes:</h3>
 
         {% for recientes in recientes_home %}
-        <div class="cell small-6 large-4">
+        <div class="cell small-6 large-3">
             <div class="card" style="width: 100%;">
                 <img src="{{recientes.image.url}}" style="height: 180px">
                 <div class="card-section">
@@ -101,6 +99,6 @@
     </div>
     <!-- FIN tercer bloque -->
 </div>
-{% include "includes/footer.html" %}
 
-{% endblock content %}
+
+{% endblock panel %}

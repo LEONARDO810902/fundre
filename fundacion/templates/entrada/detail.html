@@ -2,22 +2,21 @@
 {% extends "entrada/base_entrada.html" %}
 {% load static %}
 
-{% block content %}
+{% block panel %}
 
-{% include "includes/header.html" %}
 
-<div class="grid-container">
+<div class="grid-x grid-margin-x">
     <div class="grid-x grid-margin-x" style="margin-top: 1em;">
         <h3 class="cell">{{entrada.titulo}}</h3>
 
         <!-- bloque de contenido del articulo -->
         <div class="cell large-8">
             <div class="cell callout primary">
-                <h5>Resumen:</h5>
-                <p>{{entrada.resumen}}</p>
+                <h3>Resumen:</h3>
+                <p class="text-justify">{{entrada.resumen}}</p>
             </div>
             <div>
-                {{entrada.contenido | safe}}
+                <p class="text-justify">{{entrada.contenido | safe}}</p>
             </div>
         </div>
         <!-- FIN bloque contenido del articulo -->
@@ -38,6 +37,5 @@
 
     </div>
 </div>
-{% include "includes/footer.html" %}
 
-{% endblock content %}
+{% endblock panel %}

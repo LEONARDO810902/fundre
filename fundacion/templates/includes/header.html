@@ -1,80 +1,70 @@
 <header>
-    <div class="grid-x grid-margin-x header">
-        <div class="cell small-12 medium-4 large-3">
-            <a href="{% url 'home_app:index' %}" style="font-size: 20px; color: #0277bd;">
-                FUNDACION CRISTO REDENTOR
-            </a>
-        </div>
-        <div class="cell small-12 medium-2">
 
-        </div>
+ 
 
+   <div class="cell small-12 large-7">
+        <ul class="dropdown menu" data-dropdown-menu style="justify-content: flex-end;">
+            <li>
+                <h5>{{user.username}}</h5>
+            </li>
+            <li>
+                <a href="{% url 'home_app:index' %}">Inicio</a>
 
+            </li>
+            <li>
+                <a href="{% url 'entrada_app:lista-entradas' %}">Actividades</a>
+            </li>
+            <li>
+                <a href="">Quines Somos</a>
+                <ul class="menu">
+                    <li><a href="{% url 'esal_app:listado-esal' %}">Esal</a></li>
+                    <li><a href="#">Alojamiento</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Servicios</a>
+                <ul class="menu">
+                    <li><a href="#">Recreacion y Social</a></li>
+                    <li><a href="#">Alojamiento</a></li>
+                </ul>
+            </li>
+            {% if not user.is_anonymous %}
+            <li><a href="#">Fundación</a>
+                <ul class="menu">
+                    <li><a href="{% url 'users_app:user-create' %}" class="button success ">Crear login</a></li>
+                    <li><a href="{% url 'users_app:user-listado' %}" class="button secondary">listado</a></li>
+                    <li><a href="{% url 'users_app:user-UpdatePassword' %}" class="button success">Password</a></li>
 
+                </ul>
+            </li>
+            {% else %}
+            {% endif %}
 
-        <div class="cell small-12 large-7">
-            <ul class="dropdown menu" data-dropdown-menu style="justify-content: flex-end;">
-                <li>
-                    <h5>{{user.username}}</h5>
-                </li>
-                <li>
-                    <a href="{% url 'home_app:index' %}">Inicio</a>
-
-                </li>
-                <li>
-                    <a href="{% url 'entrada_app:lista-entradas' %}">Actividades</a>
-                </li>
-                <li>
-                    <a href="">Quines Somos</a>
-                    <ul class="menu">
-                        <li><a href="{% url 'esal_app:listado-esal' %}">Esal</a></li>
-                        <li><a href="#">Alojamiento</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Servicios</a>
-                    <ul class="menu">
-                        <li><a href="#">Recreacion y Social</a></li>
-                        <li><a href="#">Alojamiento</a></li>
-                    </ul>
-                </li>
+            <li>
                 {% if not user.is_anonymous %}
-                <li><a href="#">Fundación</a>
-                    <ul class="menu">
-                        <li><a href="{% url 'users_app:user-create' %}" class="button success ">Crear login</a></li>
-                        <li><a href="{% url 'users_app:user-listado' %}" class="button secondary">listado</a></li>
-                        <li><a href="{% url 'users_app:user-UpdatePassword' %}" class="button success">Password</a></li>
+                <a class="warning button" href="{% url 'favoritos_app:favorito-user' %}">Perfil</a>
 
-                    </ul>
-                </li>
                 {% else %}
+
+                <a class="success button" href="{% url 'users_app:user-login' %}">Acceder</a>
+
+                {% endif %}
+            </li>
+            <li>
+
+                {% if user.is_authenticated %}
+
+                <a class="secondary button" href="{% url 'users_app:user-logout' %}">Salir</a>
+
+                {% else %}
+
                 {% endif %}
 
-                <li>
-                    {% if not user.is_anonymous %}
-                    <a class="warning button" href="{% url 'favoritos_app:favorito-user' %}">Perfil</a>
 
-                    {% else %}
+            </li>
 
-                    <a class="success button" href="{% url 'users_app:user-login' %}">Acceder</a>
-
-                    {% endif %}
-                </li>
-                <li>
-
-                    {% if user.is_authenticated %}
-
-                    <a class="secondary button" href="{% url 'users_app:user-logout' %}">Salir</a>
-
-                    {% else %}
-
-                    {% endif %}
-
-
-                </li>
-
-            </ul>
-        </div>
+        </ul>
     </div>
+
 
 </header>

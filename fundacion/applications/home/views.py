@@ -45,7 +45,3 @@ class SuscribeCreateView(CreateView):
 class ContactoCreateView(CreateView):
     form_class = ContactoFoms
     success_url = '.'
-
-
-class EsalpageView(TemplateView):
-    template_name = "home/home_esal.html"

@@ -3,11 +3,14 @@ from datetime import timedelta, datetime
 
 from django.conf import settings
 from django.db import models
+from django.db.models.signals import post_save
+
 from django.template.defaultfilters import slugify
 
 # terceros
 from model_utils.models import TimeStampedModel
 from ckeditor_uploader.fields import RichTextUploadingField
+from PIL import Image
 
 # managers
 from .managers import EntradaManager
@@ -62,7 +65,7 @@ class Entrada(TimeStampedModel):
         verbose_name_plural = ('Entradas')
 
     def __str__(self):
-        return self.titulo
+        return self.titulo + ' - ' + str(self.in_home) + ' - ' + str(self.portada) + ' - ' + str(self.publicar)
 
 
 # procedimiento para crear la urls automaticas para CEO de la pagina
@@ -81,3 +84,13 @@ class Entrada(TimeStampedModel):
         self.slug = slugify(slug_unique)
 
         super(Entrada, self).save(*args, **kwargs)
+
+
+def optimizar_imagen(sender, instance, **kwargs):
+
+    if instance.image:
+        image = Image.open(instance.image.path)
+        image.save(instance.image.path, quality=20, optimize=True)
+
+
+post_save.connect(optimizar_imagen, sender=Entrada)

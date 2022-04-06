@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="grid-layout">
+
+    <div class="grid-header">
+        <a align="left" href="{% url 'home_app:index' %}"><img src="/static/img/logo_funda.png" alt=""
+                style="width: 660px; height: 160px;"> </a>
+
+    </div>
+    <div class="grid-dependencia">
+        <!-- <h1 class="title">FUNDACION CRISTO REDENTOR </h1> -->
+
+    </div>
+
+    <div class="grid-menu">
+        {% include "includes/header.html" %}
+    </div>
+
+    <div class="grid-lateral ">
+
+
+
+        <div class="row">
+            <div class="columns">
+                <ul class="vertical menu" data-accordion-menu style="max-width: 250px">
+                    <li><a href="{% url 'home_app:index' %}">INICIO</a></li>
+                    <li><a href="">DASHBOARD</a></li>
+                    <li>
+                        <a href="#">DIRECTORIO</a>
+                        <ul class="menu vertical nested">
+                            <li><a href="">1</a></li>
+                            <li><a href="#">Item 1B</a></li>
+                            <li><a href="#">Item 1C</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">SERVICIOS</a>
+                        <ul class="menu vertical nested">
+                            <li><a href="">DIARIOS</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="">Directores</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="grid-contenido">
+
+
+        {% block panel %}
+
+        <!-- CONTENIDO DE CADA UNA DE LAS PAGINAS SE CAMBIA A CADA NOMBRE DE  APP  -->
+
+        {% endblock panel %}
+
+
+    </div>
+
+    <div class="grid-footer">
+        {% include "includes/footer.html" %}
+    </div>
+
+</div>
+
+{% endblock content %}
+
+{% block js %}
+{% endblock js %}
