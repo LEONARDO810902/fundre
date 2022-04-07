@@ -11,7 +11,7 @@ class UserCreateForm(forms.ModelForm):
         label=("Contraseña"),
         required=True,
         widget=forms.PasswordInput(
-            attrs={'class': 'form-control',
+            attrs={'class': 'form-control-lg',
                    'placeholder': 'Contraseña'
                    }
         )
@@ -21,7 +21,7 @@ class UserCreateForm(forms.ModelForm):
         label=("Contraseña"),
         required=True,
         widget=forms.PasswordInput(
-            attrs={'class': 'form-control',
+            attrs={'class': 'form-control-lg',
                    'placeholder': 'Repetir Contraseña'
                    }
         )
@@ -39,12 +39,12 @@ class UserCreateForm(forms.ModelForm):
             'ocupation'
         )
         widgets = {
-            'username': forms.TextInput(attrs={'placeholder': 'Usuario', 'class': 'input-group-field'}),
-            'email': forms.EmailInput(attrs={'placeholder': 'Correo Electronico', 'class': 'input-group-field'}),
-            'Nombres': forms.TextInput(attrs={'placeholder': 'Nombres', 'class': 'input-group-field'}),
-            'Apellidos': forms.TextInput(attrs={'placeholder': 'Apellidos', 'class': 'input-group-field'}),
-            'Genero': forms.Select(attrs={'placeholder': 'Genero', 'class': 'input-group-field'}),
-            'ocupation': forms.Select(attrs={'placeholder': 'Ocupación', 'class': 'input-group-field'}),
+            'username': forms.TextInput(attrs={'placeholder': 'Usuario', 'class': 'form-control-lg'}),
+            'email': forms.EmailInput(attrs={'placeholder': 'Correo Electronico', 'class': 'form-control-lg'}),
+            'Nombres': forms.TextInput(attrs={'placeholder': 'Nombres', 'class': 'form-control-lg'}),
+            'Apellidos': forms.TextInput(attrs={'placeholder': 'Apellidos', 'class': 'form-control-lg'}),
+            'Genero': forms.Select(attrs={'placeholder': 'Genero', 'class': 'form-control-lg'}),
+            'ocupation': forms.Select(attrs={'placeholder': 'Ocupación', 'class': 'form-control-lg'}),
 
         }
 

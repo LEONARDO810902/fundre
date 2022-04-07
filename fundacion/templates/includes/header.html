@@ -1,70 +1,58 @@
 <header>
 
- 
+    <nav class="navbar navbar-expand-sm navbar-dark bg-info">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home_app:index' %}">
+                <img src="/static/img/logo_funda.png" alt="" width="200">FUNDACIÓN CRISTO REDENTOR
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="False"
+                aria-label="Toogle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-   <div class="cell small-12 large-7">
-        <ul class="dropdown menu" data-dropdown-menu style="justify-content: flex-end;">
-            <li>
-                <h5>{{user.username}}</h5>
-            </li>
-            <li>
-                <a href="{% url 'home_app:index' %}">Inicio</a>
+            <div class="collapse navbar-collapse flex-row-reverse" id="navbarSupportedContent">
+                <ul class="navbar-nav ">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'home_app:index' %}">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link"
+                            href="{% url 'entrada_app:lista-entradas' %}">Actividades</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
 
-            </li>
-            <li>
-                <a href="{% url 'entrada_app:lista-entradas' %}">Actividades</a>
-            </li>
-            <li>
-                <a href="">Quines Somos</a>
-                <ul class="menu">
-                    <li><a href="{% url 'esal_app:listado-esal' %}">Esal</a></li>
-                    <li><a href="#">Alojamiento</a></li>
+                    {% if not user.is_anonymous %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Fundación</a>
+                        <ul class="dropdown-menu ">
+                            <li><a class="dropdown-item" href="{% url 'users_app:user-create' %}">Crear
+                                    login</a></li>
+                            <li><a class="dropdown-item" href="{% url 'users_app:user-UpdatePassword' %}">Password</a>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="{% url 'users_app:user-listado' %}">listado</a></li>
+                    </li>
                 </ul>
-            </li>
-            <li>
-                <a href="#">Servicios</a>
-                <ul class="menu">
-                    <li><a href="#">Recreacion y Social</a></li>
-                    <li><a href="#">Alojamiento</a></li>
-                </ul>
-            </li>
-            {% if not user.is_anonymous %}
-            <li><a href="#">Fundación</a>
-                <ul class="menu">
-                    <li><a href="{% url 'users_app:user-create' %}" class="button success ">Crear login</a></li>
-                    <li><a href="{% url 'users_app:user-listado' %}" class="button secondary">listado</a></li>
-                    <li><a href="{% url 'users_app:user-UpdatePassword' %}" class="button success">Password</a></li>
-
-                </ul>
-            </li>
-            {% else %}
-            {% endif %}
-
-            <li>
-                {% if not user.is_anonymous %}
-                <a class="warning button" href="{% url 'favoritos_app:favorito-user' %}">Perfil</a>
-
+                </li>
                 {% else %}
-
-                <a class="success button" href="{% url 'users_app:user-login' %}">Acceder</a>
-
                 {% endif %}
-            </li>
-            <li>
-
-                {% if user.is_authenticated %}
-
-                <a class="secondary button" href="{% url 'users_app:user-logout' %}">Salir</a>
-
-                {% else %}
-
-                {% endif %}
-
-
-            </li>
-
-        </ul>
-    </div>
-
+                <li>
+                    {% if not user.is_anonymous %}
+                    {% else %}
+                    <a type="button" class="btn btn-success" href="{% url 'users_app:user-login' %}">Acceder</a>
+                    {% endif %}
+                </li>
+                <li>
+                    {% if user.is_authenticated %}
+                    <a type="button" class="btn btn-secondary" href="{% url 'users_app:user-logout' %}">Salir</a>
+                    {% else %}
+                    {% endif %}
+                </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
 </header>

@@ -8,67 +8,75 @@
 
 {% include "includes/header.html" %}
 
-<div class="grid-container altura">
-    <div class="grid-x grid-margin-x align-center">
-        <div class="cell medium-10 large-6" style="margin-top: 2em;">
-            <div class="card" style="width: 100%;">
-                <div class="card-divider">
-                    <h4>Ingrese sus datos</h4>
-                </div>
-                <div class="card-section">
-                    <form class="grid-x grid-margin-x" method="post" enctype="multipart/form-data"> {% csrf_token%}
-                        <div class="cell large-12">
-                            <label>Usuario:
-                                {{form.username}}
-                            </label>
-                        </div>
-                        <div class="cell large-12">
-                            <label>Correo:
-                                {{form.email}}
-                            </label>
-                        </div>
-                        <div class="cell medium-6">
-                            <label>Nombres:
-                                {{form.nombres}}
-                            </label>
-                        </div>
-                        <div class="cell medium-6">
-                            <label>Apellidos:
-                                {{form.apellidos}}
-                            </label>
-                        </div>
-                        <div class="cell medium-6">
-                            <label>Genero:
-                                {{form.genero}}
-                            </label>
-                        </div>
-                        <div class="cell medium-6">
-                            <label>Permisos:
-                                {{form.ocupation}}
-                            </label>
-                        </div>
-                        <div class="cell medium-12">
-                            <label>Contraseña:
-                                {{form.password1}}
-                            </label>
-                        </div>
-                        <div class="cell medium-12">
-                            <label>Repetir Contraseña:
-                                {{form.password2}}
-                            </label>
+<div class="container">
+    <div class="card">
 
-                            {% for e in form.password2.errors %}
-                            <p style="color:red">{{e}}</p>
-                            {% endfor %}
+        <div class="card-body">
+            <h4 class="card-header text-center">INGRESE DATOS DEL USUARIO</h4>
+            <form class="row g-3" method="post" enctype="multipart/form-data"> {% csrf_token%}
 
-                        </div>
-                        <button type="submit" class="cell hollow button primary">Registrar</button>
-                    </form>
-                    <a href="{% url 'users_app:user-listado' %}" class="button secondary">Regresar al Listado</a>
+                <div class="row">
+                    <hr class="dropdown-divider">
+                    <div class="col-6">
+                        <label class="form-label">Usuario:
+                            {{form.username}}
+                        </label>
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label">Correo:
+                            {{form.email}}
+                        </label>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Nombres:
+                            {{form.nombres}}
+                        </label>
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label">Apellidos:
+                            {{form.apellidos}}
+                        </label>
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label">Genero:
+                            {{form.genero}}
+                        </label>
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label">Permiso:
+                            {{form.ocupation}}
+                        </label>
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label">Contraseña:
+                            {{form.password1}}
+                        </label>
+                    </div>
+
+                    <div class="col-6">
+                        <label class="form-label">Repetir Contraseña:
+                            {{form.password2}}
+                        </label>
+
+
+                        {% for e in form.password2.errors %}
+                        <p style="color:red">{{e}}</p>
+                        {% endfor %}
+                    </div>
+
                 </div>
+
+                <button type="submit" class=" col-12 btn btn-outline-success">Registrar</button>
+            </form>
+            <hr class="dropdown-divider">
+            <div class="col-8 margin-top: 2em">
+                <a href="{% url 'users_app:user-listado' %}" class="btn btn-outline-secondary">Regresar al Listado</a>
             </div>
+
+
         </div>
     </div>
+
 </div>
 
 {% endblock content %}

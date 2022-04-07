@@ -7,9 +7,7 @@
 <div class="grid-layout">
 
     <div class="grid-header">
-        <a align="left" href="{% url 'home_app:index' %}"><img src="/static/img/logo_funda.png" alt=""
-                style="width: 660px; height: 160px;"> </a>
-
+        {% include "includes/header.html" %}
     </div>
     <div class="grid-dependencia">
         <!-- <h1 class="title">FUNDACION CRISTO REDENTOR </h1> -->
@@ -17,36 +15,27 @@
     </div>
 
     <div class="grid-menu">
-        {% include "includes/header.html" %}
+
     </div>
 
     <div class="grid-lateral ">
 
 
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'home_app:index' %}">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'entrada_app:lista-entradas' %}">Actividades</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>
+        </ul>
 
-        <div class="row">
-            <div class="columns">
-                <ul class="vertical menu" data-accordion-menu style="max-width: 250px">
-                    <li><a href="{% url 'home_app:index' %}">INICIO</a></li>
-                    <li><a href="">DASHBOARD</a></li>
-                    <li>
-                        <a href="#">DIRECTORIO</a>
-                        <ul class="menu vertical nested">
-                            <li><a href="">1</a></li>
-                            <li><a href="#">Item 1B</a></li>
-                            <li><a href="#">Item 1C</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="">SERVICIOS</a>
-                        <ul class="menu vertical nested">
-                            <li><a href="">DIARIOS</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="">Directores</a></li>
-                </ul>
-            </div>
-        </div>
 
     </div>
 

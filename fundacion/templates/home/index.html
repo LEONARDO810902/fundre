@@ -10,13 +10,45 @@
 
 {% block panel %}
 
-<div>
+<div class="container">
+
+    <div style="margin-left:10px;" id="carouselExampleInterval" class="carousel slide mt-5 w-75"
+        data-bs-ride="carousel">
+        <div class="carousel-inner">
+
+
+            <div class="carousel-item active">
+                <img src="{{portada.image.url}}" alt="..." class="d-block w-75">
+            </div>
+
+            {% for entrada in entradas_home %}
+            <div class="carousel-item ">
+                <img src="{{entrada.image.url}}" alt="" class="d-block w-75">
+            </div>
+            {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+</div>
+
+
+<div class="container-fluid">
     <!-- primer bloque del home -->
     <div class="grid-x grid-margin-x" style="margin-top: 1em;">
         <!-- bloque de blog principal -->
-        <div class="cell small-12 large-6">
+        <div class="cell small-12 large-3">
             <div class="card" style="width: 100%;">
-                <img src="{{portada.image.url}}" style="height: 380px">
+                <img src="{{portada.image.url}}" style="height: 30%">
                 <div class="card-section">
                     <h4><a href="{% url 'entrada_app:edit-entradas' portada.slug%}">{{portada.titulo }}</a></h4>
                     <p>{{portada.resumen | truncatechars:120}}</p>
@@ -41,8 +73,6 @@
                 </div>
             </div>
             {% endfor %}
-
-
         </div>
         <!-- FIN bloque de blog principal -->
     </div>

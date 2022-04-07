@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/foundation.css' %}">
     <link rel="stylesheet" href="{% static 'css/app.css' %}">
-    <!-- <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/app.css' %}">
     <link rel="stylesheet" href="{% static 'css/myweb.css' %}">
     <title>{% block title %}{% endblock title %}</title>
@@ -16,7 +16,7 @@
     {% block css %}{% endblock css %}
 </head>
 
-<body oncontextmenu="return false">
+<body oncontextmenu="return true">
 
     {% block content %}
 
@@ -26,10 +26,10 @@
     {% block js %}{% endblock js %}
 
 
-    <script src="{% static 'js/vendor/jquery.js' %}"></script>
+    <!--     <script src="{% static 'js/vendor/jquery.js' %}"></script>
     <script src="{% static 'js/vendor/what-input.js' %}"></script>
-    <script src="{% static 'js/vendor/foundation.js' %}"></script>
-    <script src="{% static 'js/app.js' %}"></script>
+    <script src="{% static 'js/vendor/foundation.js' %}"></script> -->
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 </body>
 
 </html>
