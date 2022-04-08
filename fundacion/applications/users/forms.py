@@ -43,8 +43,8 @@ class UserCreateForm(forms.ModelForm):
             'email': forms.EmailInput(attrs={'placeholder': 'Correo Electronico', 'class': 'form-control-lg'}),
             'Nombres': forms.TextInput(attrs={'placeholder': 'Nombres', 'class': 'form-control-lg'}),
             'Apellidos': forms.TextInput(attrs={'placeholder': 'Apellidos', 'class': 'form-control-lg'}),
-            'Genero': forms.Select(attrs={'placeholder': 'Genero', 'class': 'form-control-lg'}),
-            'ocupation': forms.Select(attrs={'placeholder': 'Ocupación', 'class': 'form-control-lg'}),
+            'Genero': forms.Select(attrs={'placeholder': 'Genero', 'class': 'form-select-lg'}),
+            'ocupation': forms.Select(attrs={'placeholder': 'Ocupación', 'class': 'form-select-lg'}),
 
         }
 
@@ -121,11 +121,11 @@ class UserUpdateForm(forms.ModelForm):
             'is_active',
         )
         widgets = {
-            'email': forms.EmailInput(attrs={'placeholder': 'Correo Electronico', 'class': 'input-group-field'}),
-            'Nombres': forms.TextInput(attrs={'placeholder': 'Nombres', 'class': 'input-group-field'}),
-            'Apellidos': forms.TextInput(attrs={'placeholder': 'Apellidos', 'class': 'input-group-field'}),
-            'Genero': forms.Select(attrs={'placeholder': 'Genero', 'class': 'input-group-field'}),
-            'ocupation': forms.Select(attrs={'placeholder': 'Ocupación', 'class': 'input-group-field'}),
-            'is_active': forms.CheckboxInput(attrs={'type': 'checkbox', 'class': 'input-group-field'})
+            'email': forms.EmailInput(attrs={'placeholder': 'Correo Electronico', 'class': 'form-control'}),
+            'Nombres': forms.TextInput(attrs={'placeholder': 'Nombres', 'class': 'form-control'}),
+            'Apellidos': forms.TextInput(attrs={'placeholder': 'Apellidos', 'class': 'form-control'}),
+            'Genero': forms.Select(attrs={'placeholder': 'Genero', 'class': 'form-select'}),
+            'ocupation': forms.Select(attrs={'placeholder': 'Ocupación', 'class': 'form-select'}),
+            'is_active': forms.CheckboxInput(attrs={'type': 'checkbox', 'class': 'form-check-input'})
 
         }

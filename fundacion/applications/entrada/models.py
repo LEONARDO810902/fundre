@@ -55,6 +55,7 @@ class Entrada(TimeStampedModel):
     image = models.ImageField('Imagen', upload_to='Entrada',)
     portada = models.BooleanField(default=False)
     in_home = models.BooleanField(default=False)
+    carousel = models.BooleanField(default=False)
     # para las paginas de url automaticas
     slug = models.SlugField(editable=False, max_length=300)
 

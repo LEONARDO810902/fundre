@@ -32,6 +32,9 @@ class homePageView(TemplateView):
         # Constexto de articulos recientes
         context["recientes_home"] = Entrada.objects.entrada_en_recientes()
 
+        # Imagenes del carousel de portada
+        context["corousel"] = Entrada.objects.entrada_corousel_home()
+
         # enviamos formulario de suscribe
         context["form"] = SuscribirseFoms
         return context

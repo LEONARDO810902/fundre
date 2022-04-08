@@ -5,25 +5,34 @@
 
 {% block panel %}
 
-<div class="grid-x grid-margin-x align-center altura">
 
-    <h3 class="cell">Esal - DIAN:</h3>
+<div class="container-fluid">
+    <div class="row align-center">
+        <div class="col-xs-12 col-md-12">
+            <h3>ESAL - DIAN</h3>
+        </div>
+        <!-- listado de informes de esal publicados por año  -->
+        <div class=" row col-xs-6 col-md-12 ">
+            {% for esal in listadoEsal %}
+            <div class=" col-xs-12 col-md-3 ">
+                <div class="card" style="width: 100%;">
+                    <h4><a target="_blank" href="{{esal.archivo.url}}"></h4>
+                    <div align="center" class="center">
+                        <img src="/static/img/pdf.jpg" style="width: 160px; height: 160px;">
+                    </div></a>
+                    <div class="card-section">
+                        <a target="_blank" href="{{esal.archivo.url}}">
+                            <h4 class="text-center">{{esal.titulo | truncatechars:40}}</h4>
+                        </a>
+                        <h6>{{esal.vigencia}}</h6>
 
-    {% for esal in listadoEsal %}
-    <div class="cell small-6 large-3">
-        <div class="card" style="width: 90%;">
-            <a align="center" target="_blank" href="{{esal.archivo.url}}"><img class="img-esal"
-                    src="/static/img/pdf.jpg" style="width: 160px; height: 160px;"></a>
-            <div class="card-section">
-                <a target="_blank" href="{{esal.archivo.url}}">
-                    <h4 class="text-center">{{esal.titulo | truncatechars:40}}</h4>
-                    <h6>{{esal.vigencia}}</h6>
-                </a>
-                <!-- <p>{{esal.resumen | truncatechars:70}}</p> -->
+                    </div>
+                </div>
+
             </div>
+            {% endfor %}
         </div>
     </div>
-    {% endfor %}
 </div>
 
 {% endblock panel %}

@@ -7,32 +7,38 @@
 
 {% include "includes/header.html" %}
 
-<div class="grid-container altura">
-    <div class="grid-x grid-margin-x align-center">
-        <div class="cell medium-6 large-4" style="margin-top: 2em;">
+<div class="container-fluid" style="margin-top:2em;">
+    <div class="row justify-content-center">
+        <div class="col-xs-12 col-md-6">
             <div class="card" style="width: 100%;">
                 <div class="card-divider">
-                    <h4>Acceso de usuario</h4>
+                    <h4 class="text-center">ACCESO DE USUARIO</h4>
                 </div>
-                <div class="card-section">
-                    <form class="grid-x grid-margin-x " method="post" enctype="multipart/form-data">{% csrf_token %}
-                        <div class="cell medium-12">
-                            <label>Usuario:
-                                {{form.username}}
-                            </label>
+                <div class="car-section">
+                    <form class="col-xs-12 col-md-12 " method="post" enctype="multipart/form-data">{% csrf_token %}
+
+                        <div class="row justify-content-center">
+                            <div class=" mb-3 col-xs-12 col-md-7">
+                                <label>Usuario:</label>
+                                <div class="form-control-lg">{{form.username}}</div>
+                            </div>
+                            <div class="mb-3 col-xs-12 col-md-7">
+                                <label>Contraseña: </label>
+                                <div class="form-control-lg">{{form.password}}</div>
+                            </div>
                         </div>
-                        <div class="cell medium-12">
-                            <label>Contraseña:
-                                {{form.password}}
-                            </label>
-                        </div>
-                        <button type="submit" class="cell hollow button primary">Acceder</button>
-                        <a class="cell hollow button alert" href="{% url 'users_app:user-create' %}">Registrar</a>
+                        <br>
+                        <button type="submit" class="col-12 btn btn-outline-success">Acceder</button>
                     </form>
+                    <br>
+                    <a class="col-12 btn btn-outline-secondary" href="{% url 'users_app:user-create' %}">Registrar</a>
                 </div>
             </div>
         </div>
+
     </div>
+
 </div>
+
 
 {% endblock content %}

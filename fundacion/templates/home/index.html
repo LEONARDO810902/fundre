@@ -10,43 +10,40 @@
 
 {% block panel %}
 
-<div class="container">
-
-    <div style="margin-left:10px;" id="carouselExampleInterval" class="carousel slide mt-5 w-75"
-        data-bs-ride="carousel">
-        <div class="carousel-inner">
-
-
-            <div class="carousel-item active">
-                <img src="{{portada.image.url}}" alt="..." class="d-block w-75">
-            </div>
-
-            {% for entrada in entradas_home %}
-            <div class="carousel-item ">
-                <img src="{{entrada.image.url}}" alt="" class="d-block w-75">
-            </div>
-            {% endfor %}
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-
-</div>
-
-
 <div class="container-fluid">
-    <!-- primer bloque del home -->
-    <div class="grid-x grid-margin-x" style="margin-top: 1em;">
-        <!-- bloque de blog principal -->
-        <div class="cell small-12 large-3">
+    <div class="row">
+
+        <!-- Grupo de carousel de imagenes de la portada -->
+
+        <div class="col-xs-12 col-md-4 images_carousel">
+            <div id="carouselPortada" class="carousel slide mt-5" data-bs-ride="carousel">
+                <div class="carousel-inner">
+
+                    <div class="carousel-item active">
+                        <img src="{{portada.image.url}}" alt="..." class="d-block w-100">
+                    </div>
+
+                    {% for corousel in corousel %}
+                    <div class="carousel-item ">
+                        <img src="{{corousel.image.url}}" alt="..." class="d-block w-100">
+                    </div>
+                    {% endfor %}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselPortada"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon bg-success" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselPortada"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon bg-success" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Entrada de Portada principal  -->
+        <div class="col-xs-12 col-md-5">
             <div class="card" style="width: 100%;">
                 <img src="{{portada.image.url}}" style="height: 30%">
                 <div class="card-section">
@@ -55,12 +52,27 @@
                 </div>
             </div>
         </div>
+        <div class="col-xs-12 col-md-3 bg-primary">
+            <h4>imagen de adultos mayores </h4>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container-fluid">
+    <!-- primer bloque del home -->
+    <div class="grid-x grid-margin-x" style="margin-top: 1em;">
+        <!-- bloque de blog principal -->
+        <div class="cell small-12 large-3">
+
+        </div>
         <!-- FIN bloque de blog principal -->
 
         <!-- bloque de blog principal -->
         <div class="cell small-12 large-6 grid-x grid-margin-x">
 
-            {% for entrada in entradas_home %}
+            <!--  {% for entrada in entradas_home %}
 
             <div class="cell small-12 large-6">
                 <div class="card" style="width: 100%;">
@@ -72,62 +84,75 @@
                     </div>
                 </div>
             </div>
-            {% endfor %}
+            {% endfor %} -->
         </div>
         <!-- FIN bloque de blog principal -->
     </div>
-    <!-- FIN del primer bloque home -->
 
-    <!-- segundo bloque pantalla home -->
-    <div class="grid-x align-center" style="margin-top: 1em;">
-        <div class="cell small-12 large-10 callout secondary">
-            <h5>{{home.about_title}}</h5>
-            <p>
-                {{home.about_text}}
-            </p>
 
-            <p>
-                <button class="button" data-open="exampleModal2">Suscribirme</button>
-            </p>
+    <!-- Bloque donde se encuentra el Suscribirme -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-md-3">
 
-            <!-- This is the first modal -->
-            <div class="reveal" id="exampleModal2" data-reveal style="width: 300px;">
-                <p class="lead">Ingresa tu correo</p>
-                <form class="grid-x grid-margin-x" method="POST" action="{% url 'home_app:home_suscribe'%}">
-                    {% csrf_token %}
-                    <div class="cell small-12">
-                        {{form.email}}
-                    </div>
-                    <div class="cell small-12">
-                        <button type="submit" class="success button">Suscribirme</button>
-                    </div>
-                </form>
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <h4>{{home.about_title}}</h4>
+                <p class="text-justify">{{home.about_text}}</p>
+                <p>
+                    <button class="btn btn-primary" data-open="exampleModal2">Suscribirme</button>
+                </p>
+
+                <!-- <div class="reveal" id="exampleModal2" data-reveal style="width: 300px;">
+                    <p class="lead">Ingresa tu correo</p>
+                    <form class="grid-x grid-margin-x" method="POST" action="{% url 'home_app:home_suscribe'%}">
+                        {% csrf_token %}
+                        <div class="cell small-12">
+                            {{form.email}}
+                        </div>
+                        <div class="cell small-12">
+                            <button type="submit" class="success button">Suscribirme</button>
+                        </div>
+                    </form>
+                </div> -->
+
             </div>
 
+            <!-- Frace de la fundación -->
+            <div class="col-xs-12 col-md-3 text-center">
+                <button class="btn btn-warning">
+                    <p>EN LA CASA DE LOS PADRES CABEN MUCHOS HIJOS….! </p>
+                    <p> PERO MUY TRISTE QUE EN LA CASA DEL HIJO NO CABEN LOS PADRES?
+                    </p>
+                </button>
+            </div>
         </div>
     </div>
-    <!-- FIN segundo bloque pantalla home -->
 
-
-    <!-- tercer bloque home -->
-    <div class="grid-x grid-margin-x align-center">
-        <h3 class="cell">Articulos Recientes:</h3>
-
-        {% for recientes in recientes_home %}
-        <div class="cell small-6 large-3">
-            <div class="card" style="width: 100%;">
-                <img src="{{recientes.image.url}}" style="height: 180px">
-                <div class="card-section">
-                    <a href="{% url 'entrada_app:edit-entradas' recientes.slug%}">
-                        <h4>{{recientes.titulo | truncatechars:20}}</h4>
-                    </a>
-                    <p>{{recientes.resumen | truncatechars:30}}</p>
+    <!-- Bloque de entradas recientes a la pagina  -->
+    <div class="container-fluid">
+        <div class="row align-center">
+            <div class="col-xs-12 col-md-12">
+                <h3>Articulos Recientes:</h3>
+            </div>
+            <div class="row col-xs-3 col-md-12">
+                {% for recientes in recientes_home %}
+                <div class="col col-xs-12 col-md-3">
+                    <div class="card" style="width: 100%;">
+                        <img src="{{recientes.image.url}}" style="height: 180px">
+                        <div class="card-section">
+                            <a href="{% url 'entrada_app:edit-entradas' recientes.slug%}">
+                                <h4>{{recientes.titulo | truncatechars:20}}</h4>
+                            </a>
+                            <p>{{recientes.resumen | truncatechars:30}}</p>
+                        </div>
+                    </div>
                 </div>
+                {% endfor %}
             </div>
         </div>
-        {% endfor %}
     </div>
-    <!-- FIN tercer bloque -->
+
 </div>
 
 
