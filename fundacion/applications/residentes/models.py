@@ -15,7 +15,7 @@ class Residente(TimeStampedModel):
     nombre = models.CharField(max_length=30)
     apellidos = models.CharField(max_length=30)
     cedula = models.CharField(max_length=20)
-    foto = models.ImageField('Foto', upload_to='Residentes')
+    foto = models.ImageField('Foto', upload_to='Residentes/foto/%Y/%m/%d')
     fecha_nacimiento = models.DateField()
     eps = models.CharField(max_length=30)
     fecha_ingreso = models.DateField(default=date.today)

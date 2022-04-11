@@ -1,0 +1,6 @@
+### ignorar los archivos de configuracion ###
+
+secret.json
+fixtures
+*.pdf
+

@@ -61,7 +61,7 @@ class LoginForm(forms.Form):
         widget=forms.TextInput(
             attrs={
                 'placeholder': 'username',
-                'style': '{ margin: 10px }',
+                'class': 'form-control-lg',
             }
         )
     )
@@ -71,6 +71,7 @@ class LoginForm(forms.Form):
         widget=forms.PasswordInput(
             attrs={
                 'placeholder': 'Contraseña',
+                'class': 'form-control-lg',
             }
         )
     )
@@ -90,7 +91,7 @@ class UpdatePasswordForm(forms.Form):
         label=("Contraseña"),
         required=True,
         widget=forms.PasswordInput(
-            attrs={'class': 'form-control',
+            attrs={'class': 'form-control-lg',
                    'placeholder': 'Contraseña Actual '
                    }
         )
@@ -100,12 +101,11 @@ class UpdatePasswordForm(forms.Form):
         label=("Contraseña"),
         required=True,
         widget=forms.PasswordInput(
-            attrs={'class': 'form-control',
+            attrs={'class': 'form-control-lg',
                    'placeholder': 'Contraseña Nueva '
                    }
         )
     )
-
 
 class UserUpdateForm(forms.ModelForm):
 
@@ -121,9 +121,9 @@ class UserUpdateForm(forms.ModelForm):
             'is_active',
         )
         widgets = {
-            'email': forms.EmailInput(attrs={'placeholder': 'Correo Electronico', 'class': 'form-control'}),
-            'Nombres': forms.TextInput(attrs={'placeholder': 'Nombres', 'class': 'form-control'}),
-            'Apellidos': forms.TextInput(attrs={'placeholder': 'Apellidos', 'class': 'form-control'}),
+            'email': forms.EmailInput(attrs={'placeholder': 'Correo Electronico', 'class': 'form-control-lg'}),
+            'Nombres': forms.TextInput(attrs={'placeholder': 'Nombres', 'class': 'form-control-lg'}),
+            'Apellidos': forms.TextInput(attrs={'placeholder': 'Apellidos', 'class': 'form-control-lg'}),
             'Genero': forms.Select(attrs={'placeholder': 'Genero', 'class': 'form-select'}),
             'ocupation': forms.Select(attrs={'placeholder': 'Ocupación', 'class': 'form-select'}),
             'is_active': forms.CheckboxInput(attrs={'type': 'checkbox', 'class': 'form-check-input'})

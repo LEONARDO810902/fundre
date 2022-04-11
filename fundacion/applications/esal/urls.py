@@ -9,5 +9,10 @@ urlpatterns = [
         views.EsalListView.as_view(),
         name='listado-esal',
     ),
+    path(
+        'CreateEsal/',
+        views.EsalCreateView.as_view(),
+        name='create-esal',
+    ),
 
 ]

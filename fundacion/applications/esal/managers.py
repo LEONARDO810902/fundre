@@ -6,5 +6,5 @@ class EsalManager(models.Manager):
     def Listado_esal_portada(self):
         return self.filter(
             publicar=True,
-            vigencia=2021,
+            vigencia=2022,
         ).order_by('-created')
