@@ -6,26 +6,35 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/foundation.css' %}">
-    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+    <link rel="stylesheet" href="{% static 'foundation/css/foundation.css' %}">
+    <link rel="stylesheet" href="{% static 'foundation/css/app.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/myweb.css' %}">
     <title>{% block title %}{% endblock title %}</title>
     {% block description %}{% endblock description %}
     {% block css %}{% endblock css %}
 </head>
 
-<body>
+<!-- <script language="Javascript">
+    document.oncontextmenu = function () { return false }
+</script> -->
+
+
+<body class="nocopy">
+
 
     {% block content %}
+
+
     {% endblock content %}
 
     {% block js %}{% endblock js %}
 
 
-    <script src="{% static 'js/vendor/jquery.js' %}"></script>
-    <script src="{% static 'js/vendor/what-input.js' %}"></script>
-    <script src="{% static 'js/vendor/foundation.js' %}"></script>
-    <script src="{% static 'js/app.js' %}"></script>
+    <script src="{% static 'foundation/js/vendor/jquery.js' %}"></script>
+    <script src="{% static 'foundation/js/vendor/what-input.js' %}"></script>
+    <script src="{% static 'foundation/js/vendor/foundation.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 </body>
 
 </html>

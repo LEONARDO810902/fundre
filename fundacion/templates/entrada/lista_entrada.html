@@ -2,31 +2,32 @@
 {% extends "entrada/base_entrada.html" %}
 {% load static %}
 
-{% block content %}
+{% block panel %}
 
-{% include "includes/header.html" %}
 
-<div class="grid-container">
-    <div class="grid-x grid-margin-x" style="margin-top: 1em;">
-        <!-- primer bloque pantalla blog -->
-        <div class="cell small-12 large-8">
+<div class="container-fluid">
+    <div class="row justify-content-center">
 
-            <!-- bloque de buscador -->
-            <form class="input-group" method="GET"> {% csrf_token %}
-                <input class="input-group-field" type="text" id="buscarentrada" name="buscarentrada"
-                    placeholder="Buscar ...">
-                <div class="input-group-button">
-                    <input type="submit" class="button" value="Buscar">
-                </div>
-            </form>
-            <!-- FIN bloque de formulario -->
+        <div class="col-xs-12 col-md-10 ">
 
-            <!-- inicio bloque de resultados de busqueda -->
-            <div class="grid-x grid-margin-x">
+            <!-- Inicio del Bucador por categorias -->
+            <div class="col-xs-12 col-md-10" style="margin-top: 1em;">
+                <form class="input-group" method="GET"> {% csrf_token %}
+                    <input class="input-group-field" type="text" id="buscarentrada" name="buscarentrada"
+                        placeholder="Buscar ...">
+                    <div class="input-group-button">
+                        <input type="submit" class="button" value="Buscar">
+                    </div>
+                </form>
+            </div>
+
+            <!-- Lista de Actividades realizadas  -->
+
+            <div class="row col-xs-12 col-md-10" style="width: 100%;">
                 {% for entrada in entradas %}
-                <div class="cell small-6 large-4">
+                <div class="col-xs-12 col-md-4 ">
                     <div class="card" style="width: 100%;">
-                        <img src="{{entrada.image.url}}" style="height: 180px">
+                        <img src="{{entrada.image.url}}" style="height: 200px">
                         <div class="card-section">
                             <a href="{% url 'entrada_app:edit-entradas' entrada.slug %}">
                                 <h4>{{entrada.titulo | truncatechars:40}}</h4>
@@ -35,66 +36,58 @@
                         </div>
                     </div>
                 </div>
+
                 {% empty %}
+
                 <h3 style="color:red">No se encontraron resultados para la consulta </h3>
 
                 {% endfor %}
             </div>
-            <!-- FIN bloque de resultados de busqueda -->
+            <!-- Fin de lista de actividades realizadas -->
 
         </div>
-        <!-- FIN primer bloque pantalla blog -->
 
-
-        <!-- inicio del segundo bloque - categorias -->
-        <div class="cell small-12 large-4" style="height: 500px;">
-            <h4>Categorias</h4>
-            <ul class="vertical menu">
-
-                {% for categoria in Categorias %}
-                <li><a href="?categoria={{categoria.short_name}}">{{categoria.name}}</a></li>
-                {% endfor %}
-
-
-            </ul>
+        <!-- Listado de Categorias del sistemas -->
+        <div class="col-xs-12 col-md-2">
+            <div class="col-xs-12 col-md-12">
+                <h4>Categorias:</h4>
+                <ul class="nav flex-column">
+                    {% for categoria in Categorias %}
+                    <li><a href="?categoria={{categoria.short_name}}">{{categoria.name}}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
-        <!-- FIN inicio del segundo bloque - categorias -->
-
     </div>
 
-    <!-- inicio de bloque de paginacion -->
-    <div class="pagination">
-        {% for Entrada in page_obj %}
+    <!-- Inicio de la Paginacion de las actividades realizadas -->
 
-        {{ Entrada.full_name|upper }}<br>
-        {% endfor %}
+    <div class="row">
         <nav>
-            <ul>
+            <ul class="pagination">
                 <li>
-                    <span class="step-links">
-                        {% if page_obj.has_previous %}
-                        <a href="?page={{ page_obj.previous_page_number }}">Anterior</a>
-                        {% endif %}
+                    {% if page_obj.has_previous %}
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+                    {% endif %}
                 </li>
-                <li>
-                    <span class="current">
-                        Pagina {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
-                    </span>
+                <li class="page-item">
+                    <a class="page-link"> Pagina {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.</a>
                 </li>
+
                 <li>
                     {% if page_obj.has_next %}
-                    <a href="?page={{ page_obj.next_page_number }}">Siguiente</a>
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">Siguiente</a>
                     {% endif %}
-                    </span>
                 </li>
+
             </ul>
         </nav>
     </div>
 
 
-</div>
-<!-- FIN bloque de paginacion -->
-</div>
-{% include "includes/footer.html" %}
 
-{% endblock content %}
+</div>
+
+
+
+{% endblock panel %}

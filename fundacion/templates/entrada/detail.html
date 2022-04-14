@@ -2,42 +2,37 @@
 {% extends "entrada/base_entrada.html" %}
 {% load static %}
 
-{% block content %}
+{% block panel %}
 
-{% include "includes/header.html" %}
-
-<div class="grid-container">
-    <div class="grid-x grid-margin-x" style="margin-top: 1em;">
-        <h3 class="cell">{{entrada.titulo}}</h3>
-
-        <!-- bloque de contenido del articulo -->
-        <div class="cell large-8">
-            <div class="cell callout primary">
-                <h5>Resumen:</h5>
-                <p>{{entrada.resumen}}</p>
-            </div>
-            <div>
-                {{entrada.contenido | safe}}
-            </div>
+<div class="container-fluid">
+    <h3 class="cell">{{entrada.titulo}}</h3>
+    <div class="row">
+        <div class=" callout col-8">
+            <h3>Resumen:</h3>
+            <p class="text-justify">{{entrada.resumen}}</p>
         </div>
-        <!-- FIN bloque contenido del articulo -->
-
-        <!-- bloque llamada a la accion -->
-        <div class="cell large-4">
+        <div class="col-8">
+            <p class="text-justify">{{entrada.contenido | safe}}</p>
+        </div>
+        <div class="col-4">
             <div class="card" style="width: 100%;">
                 <img src="{{entrada.image.url}}">
                 <div class="card-section" style="width: 100%;">
-                    <form class="blog-action" method="post"
-                        action="{% url 'favoritos_app:agregar-favoritos' entrada.id %}">{% csrf_token %}
-                        <button class="button alert" type="submit">Agregar a Favoritos </button>
+                    <form class="" method="post" action="{% url 'favoritos_app:agregar-favoritos' entrada.id %}">
+                        {% csrf_token %}
+                        <button class="btn col-12 btn-outline-danger" type="submit">Agregar a Favoritos </button>
                     </form>
+                    <hr class="dropdown-divider">
+                    <div class="margin-top: 2em">
+                        <a href="{% url 'entrada_app:lista-entradas' %}"
+                            class="btn col-12 btn-outline-secondary">Regresar a
+                            las Entradas</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- FIN bloque llamada a la accion -->
 
+        </div>
     </div>
 </div>
-{% include "includes/footer.html" %}
 
-{% endblock content %}
+{% endblock panel %}

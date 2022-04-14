@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="grid-layout">
+
+    <div class="grid-header">
+        <div class="container-fluid">
+            {% include "includes/header.html" %}
+        </div>
+    </div>
+    <div class="grid-dependencia">
+        <!-- <h1 class="title">FUNDACION CRISTO REDENTOR </h1> -->
+
+    </div>
+
+    <div class="grid-menu">
+
+    </div>
+
+    <div class="grid-lateral ">
+
+
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'home_app:index' %}">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'entrada_app:lista-entradas' %}">Actividades</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>
+        </ul>
+
+
+    </div>
+
+
+    <div class="grid-contenido">
+
+
+        {% block panel %}
+
+        <!-- CONTENIDO DE CADA UNA DE LAS PAGINAS SE CAMBIA A CADA NOMBRE DE  APP  -->
+
+        {% endblock panel %}
+
+
+    </div>
+
+
+    <div class="grid-footer">
+        {% include "includes/footer.html" %}
+    </div>
+
+</div>
+
+{% endblock content %}
+
+{% block js %}
+{% endblock js %}

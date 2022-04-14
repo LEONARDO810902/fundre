@@ -1,20 +1,121 @@
-body {
-    margin: 0px;
+body,
+html {
+    height: 100%;
+    /* background-image: linear-gradient(#074c00, #42a341, #b8e2a3); */
+    background-image: radial-gradient(circle at 50% -20.71%, #c5ffff 0, #bfffff 25%, #b5def2 50%, #a8bdc9 75%, #9a9fa3 100%);
+    margin: 0;
+    padding: 0;
+    /* color: #FFF; */
     font-family: "Muli", sans-serif;
-    background-image: linear-gradient(to top, #68c9c9 0%, #7f5fa7 100%);
-
+    overflow: auto;
 }
-.title{
+
+
+.nocopy {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+   }
+
+.title {
     color: white !important;
 }
 
-.altura {
-    height: calc(94.6vh);
-    width: 100%; 
+
+h1 {
+    margin: 0px;
 }
 
-.button{   
+
+.altura {
+    height: calc(94.6vh);
+    width: 100%;
+}
+
+.button {
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
     border-radius: 20px;
+}
+
+.btn {
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+}
+
+
+.menu {
+    border-radius: 20px;
+}
+
+
+/* se realiza la grid de las paginas del panel   */
+
+.grid-layout {
+    display: grid;
+    height: 100%;
+    justify-content: center;
+    grid-template-areas: 'header header header header header'
+        'menu menu menu menu menu'
+        'lateral contenido contenido contenido contenido'
+        'footer footer footer footer footer'
+    ;
+    justify-content: stretch;
+    grid-template-columns: 10% auto;
+    grid-template-rows: 7% 5% auto 4%;
+
+}
+
+.grid-header {
+    grid-area: header;
+    /*     background-color: rgb(85, 74, 184); */
+    /* text-align: center; */
+}
+
+.grid-dependencia {
+
+    grid-area: dependencia;
+    text-align: right;
+    color: white;
+}
+
+.grid-menu {
+    grid-area: menu;
+    /* background-color: rgba(5, 104, 16, 0.193); */
+    text-align: center;
+    border-color: black;
+}
+
+.grid-lateral {
+    grid-area: lateral;
+    /* background-color: rgb(13, 181, 27); */
+    /* text-align: center; */
+    /* grid-template-rows: 7% 5% 74% 12%; */
+    margin-left: 10px;
+    margin-top: 30px;
+
+}
+
+.grid-contenido {
+    grid-area: contenido;
+    height: 100%;
+    /* overflow: auto; */
+}
+
+.grid-footer {
+    grid-area: footer;
+    background-color: rgb(207, 207, 211);
+}
+
+.carousel-inner img {
+    width: 100%;
+    max-height: 100%;
+}
+
+.carousel-inner {
+    height: 450px;
 }

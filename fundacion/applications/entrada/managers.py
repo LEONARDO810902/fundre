@@ -15,10 +15,16 @@ class EntradaManager(models.Manager):
             in_home=True,
         ).order_by('-created')[:4]
 
+    def entrada_corousel_home(self):
+        return self.filter(
+            publicar=True,
+            carousel=True,
+        ).order_by('-created')
+
     def entrada_en_recientes(self):
         return self.filter(
             publicar=True,
-        ).order_by('-created')[:6]
+        ).order_by('-created')[:4]
 
     def Buscar_entradas(self, buscarentrada, categoria):
         # procedimiento para buscar las entradas  por palabra clave

@@ -32,14 +32,18 @@ class homePageView(TemplateView):
         # Constexto de articulos recientes
         context["recientes_home"] = Entrada.objects.entrada_en_recientes()
 
+        # Imagenes del carousel de portada
+        context["corousel"] = Entrada.objects.entrada_corousel_home()
+
         # enviamos formulario de suscribe
         context["form"] = SuscribirseFoms
         return context
 
 
 class SuscribeCreateView(CreateView):
+    template_name = "home/suscribirme.html"
     form_class = SuscribirseFoms
-    success_url = '.'
+    success_url = reverse_lazy('home_app:index')
 
 
 class ContactoCreateView(CreateView):
@@ -47,5 +51,19 @@ class ContactoCreateView(CreateView):
     success_url = '.'
 
 
-class EsalpageView(TemplateView):
-    template_name = "home/home_esal.html"
+class Error404View(TemplateView):
+    template_name = 'home/errors/error_404.html'
+
+
+class Error500View(TemplateView):
+    template_name = 'home/errors/error_500.html'
+
+    @classmethod
+    def as_error_view(cls):
+        v = cls.as_view()
+
+        def view(request):
+            r = v(request)
+            r.render()
+            return r
+        return view

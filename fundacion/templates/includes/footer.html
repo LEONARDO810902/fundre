@@ -1,36 +1,29 @@
-<div class="callout secondary">
-    <div class="grid-x align-center">
-        <h3 class="cell small-12 large-7">Formulario de Contacto:</h3>
-        <form class="cell small-12 large-7" method="post" action="{% url 'home_app:home-contacto'%}">
-            {% csrf_token %}
-            <div class="grid-x grid-padding-x">
-                <div class="medium-6 cell">
-                    <label>Nombres
-                        <input type="text" name="full_name" id="id_full_name" placeholder="nombres...">
-                    </label>
-                </div>
-                <div class="medium-6 cell">
-                    <label>Correo
-                        <input type="email" name="email" id="id_email" placeholder="Correo ...">
-                    </label>
-                </div>
-                <div class="medium-12 cell">
-                    <label>Mensaje
-                        <textarea name="mensaje" id="id_mensaje" placeholder="Mensaje"></textarea>
-                    </label>
-                </div>
-                <div class="medium-12 cell">
-                    <button type="submit" class="success button">Enviar</button>
-                </div>
+<footer>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-md-4">
+                <h3 class="text-center">Sobre Cristo Redentor</h3>
+                <p class="text-justify">La Fundación Cristo Redentor les agradece, por la participación en la
+                    suscripción al canal de youtube, gran actividad en la redes sociales en procura de una vida
+                    saludable a nuestros
+                    adultos mayores. </p>
             </div>
-        </form>
-        <p class="cell large-8">Información de contacto con la fundación </p>
-        <p class="cell large-8">
-            <span class="label warning">{{correo}}</span>
-            <span class="label warning">{{phone}}</span>
-        </p>
+            <div class="col-xs-12 col-md-5">
+                <a align="left" href="{% url 'home_app:index' %}"><img src="/static/img/logo_funda.png" alt=""
+                        style="width: 360px; height: 160px;"> </a>
+            </div>
+            <div class="col-xs-12 col-md-3">
+                <div class="col-xs-12">
+                    <h4>Contactenos</h4>
+                </div>
+                <h5>+573187345801</h5>
+                <h5>secretaria@fundacioncristoredentor.org</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="text-center">© 2022 FUNDACIÓN CRISTO REDENTOR - Todos los derechos reservados</p>
+            </div>
+        </div>
     </div>
-    <div class="medium-12 cell; ">
-        <p align="center">© 2021 FUNDACIÓN CRISTO REDENTOR - Todos los derechos reservados</p>
-    </div>
-</div>
+</footer>

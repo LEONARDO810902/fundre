@@ -10,7 +10,7 @@ urlpatterns = [
         name='index',
     ),
     path(
-        'registrar-suscribe',
+        'suscribirme',
         views.SuscribeCreateView.as_view(),
         name='home_suscribe',
     ),

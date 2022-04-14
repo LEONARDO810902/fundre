@@ -7,23 +7,32 @@
 
 {% include "includes/header.html" %}
 
-<div class="grid-container">
-    <div class="grid-x grid-margin-x align-center">
-        <div class="cell medium-6 large-4" style="margin-top: 2em;">
-            <div class="card" style="width: 100%;">
-                <div class="card-divider">
-                    <h4>Cambiar la Contraseña de: {{user.get_full_name}}</h4>
-                </div>
-                <div class="card-section">
-                    <form class="grid-x grid-margin-x " method="post">{% csrf_token%}
-                        <div class="cell medium-12">
+<div class="container-fluid">
 
-                            {{form.as_p}}
+    <div class="row justify-content-center">
+        <div class="col-xs-12 col-md-8 align-center">
+            <div class="col-xs-12 col-md-8" style="margin-top: 2em;">
+                <div class="card" style="width: 100%;">
+                    <div class="card-header">
+                        <h4>Cambiar la Contraseña de: {{user.get_full_name}}</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row justify-content-center">
+                            <form class="col-xs-12 col-md-12 " method="post">{% csrf_token%}
+                                <div class="col-xs-12 col-md-12">
 
+                                    <div class="form-control">{{form.as_p}}</div>
+                                </div>
+                                <br>
+
+                                <button type="submit" class="col-12 btn btn-outline-success">Actualizar
+                                    contraseña</button>
+
+                            </form>
                         </div>
-                        <button type="submit" class="cell hollow button primary">Actualizar contraseña</button>
-                    </form>
-                    <p>La fecha: {{fecha}}</p>
+                        <br>
+                        <p>La fecha: {{fecha}}</p>
+                    </div>
                 </div>
             </div>
         </div>
