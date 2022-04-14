@@ -6,7 +6,10 @@ from .base import *
 DEBUG = True
 
 ALLOWED_HOSTS = ['fundacioncristoredentor.org',
-                 'http://www.fundacioncristoredentor.org', 'https://www.fundacioncristoredentor.org']
+                 'http://www.fundacioncristoredentor.org', 'https://www.fundacioncristoredentor.org',
+                 'http://www.fundacioncristoredentor.org/admin'
+                 ]
+
 
 CSRF_TRUSTED_ORIGINS = ['https://fundacioncristoredentor.org']
 
@@ -39,7 +42,7 @@ MEDIA_ROOT = BASE_DIR.child('media')
 
 # ckeditor settings
 
-CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_UPLOAD_PATH = 'imagenes/entredas/'
 CKEDITOR_IMAGEN_BACKEND = 'pillow'
 CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
 

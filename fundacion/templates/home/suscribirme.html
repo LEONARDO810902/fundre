@@ -1,0 +1,33 @@
+{% extends "home/base_home.html" %}
+{% load static %}
+
+
+{% block panel %}
+
+<div class="container-fluid " style="margin-top:2em">
+    <div class="row justify-content-center">
+        <div class="col-xs-12 col-md-6">
+            <div class="card" style="width: 100%;">
+                <div class="card-divider">
+                    <h4>Suscribate a nuestros mensajes de actividades</h4>
+                </div>
+                <div class="card-section">
+                    <form method="post" action="" class="col-xs-12 col-md-12"> {% csrf_token %}
+                        <div class="">Ingrese su correo: </div>
+                        <div class="col-xs-12">
+                            {{form.email}}
+                        </div>
+                        <br>
+                        <button type="submit" class=" col-12 btn btn-outline-primary">Suscribirme</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock panel%}

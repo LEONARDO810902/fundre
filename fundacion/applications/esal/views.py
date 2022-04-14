@@ -14,6 +14,8 @@ from django.views.generic.edit import (
     FormView,
 )
 
+# MIXINS DE USERS
+from applications.users.mixins import AdminpermisoMixin, TesoreroPermisoMixin
 
 # Formularios locales de apps
 
@@ -32,7 +34,7 @@ class EsalListView(ListView):
         return Esal.objects.Listado_esal_portada()
 
 
-class EsalCreateView(FormView):
+class EsalCreateView(TesoreroPermisoMixin, FormView):
     template_name = "esal/esal_create.html"
     form_class = EsalCreateForm
     success_url = reverse_lazy('esal_app:listado-esal')

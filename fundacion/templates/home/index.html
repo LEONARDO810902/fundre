@@ -100,22 +100,10 @@
                 <h4>{{home.about_title}}</h4>
                 <p class="text-justify">{{home.about_text}}</p>
                 <p>
-                    <button class="btn btn-primary" data-open="exampleModal2">Suscribirme</button>
+                    <a href="{% url 'home_app:home_suscribe' %}">
+                        <button class="col-xs-12 col-md-3 btn btn-primary">Suscribirme</button>
+                    </a>
                 </p>
-
-                <!-- <div class="reveal" id="exampleModal2" data-reveal style="width: 300px;">
-                    <p class="lead">Ingresa tu correo</p>
-                    <form class="grid-x grid-margin-x" method="POST" action="{% url 'home_app:home_suscribe'%}">
-                        {% csrf_token %}
-                        <div class="cell small-12">
-                            {{form.email}}
-                        </div>
-                        <div class="cell small-12">
-                            <button type="submit" class="success button">Suscribirme</button>
-                        </div>
-                    </form>
-                </div> -->
-
             </div>
 
             <!-- Frace de la fundación -->

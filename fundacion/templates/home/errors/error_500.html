@@ -1,0 +1,33 @@
+{% extends "home/base_home.html" %}
+{% load static %}
+
+
+{% block panel %}
+
+<div class="container-fluid " style="margin-top:2em">
+    <div class="row justify-content-center">
+        <div class="col-xs-12 col-md-6">
+            <div class="card" style="width: 100%;">
+                <div class="card-divider">
+                    <h4>Error en la Pagina </h4>
+                </div>
+
+                <div class="card-section">
+                    <div class="col-xs-12 col-md-12">
+                        <h3>Lo sentimos se presento un errors en el servidor por favor informar al administrador</h3>
+                    </div>
+                    <a href="{% url 'home_app:index' %}">
+                        <button class="col-xs-12 col-md-3 btn btn-secondary">Regresar</button>
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock panel%}

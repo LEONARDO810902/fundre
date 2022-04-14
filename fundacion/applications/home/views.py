@@ -41,10 +41,29 @@ class homePageView(TemplateView):
 
 
 class SuscribeCreateView(CreateView):
+    template_name = "home/suscribirme.html"
     form_class = SuscribirseFoms
-    success_url = '.'
+    success_url = reverse_lazy('home_app:index')
 
 
 class ContactoCreateView(CreateView):
     form_class = ContactoFoms
     success_url = '.'
+
+
+class Error404View(TemplateView):
+    template_name = 'home/errors/error_404.html'
+
+
+class Error500View(TemplateView):
+    template_name = 'home/errors/error_500.html'
+
+    @classmethod
+    def as_error_view(cls):
+        v = cls.as_view()
+
+        def view(request):
+            r = v(request)
+            r.render()
+            return r
+        return view
